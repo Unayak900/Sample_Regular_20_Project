@@ -32,11 +32,6 @@ val DFnew3 = DFnew2.select($"id",$"author",$"tag_name",$"frameworks_id1",explode
   sort("frameworks_id1")
  DFnew3.show(false)
 
-   //.withColumn("frameworks_id", $"frameworks_id.frameworks_id1")
-
-   //.withColumn("frameworks_id",$"frameworks_id.frameworks_id2")
-
- // jsonDFnew.show(false)
 
   }
 
