@@ -1,6 +1,6 @@
 package org.allaboutscala.application
 
-import org.apache.spark.sql.functions.explode
+import org.apache.spark.sql.functions.{array_contains, explode}
 
 object Tutorial_04_Explode extends App with Context{
 import sparksession.sqlContext.implicits._
@@ -31,6 +31,14 @@ val DFnew2 = DFnew.withColumn( "frameworks_id1", explode($"frameworks_id") as "f
 val DFnew3 = DFnew2.select($"id",$"author",$"tag_name",$"frameworks_id1",explode($"frameworks_name") as "frameworks_name" ).distinct().
   sort("frameworks_id1")
  DFnew3.show(false)
+
+
+  //column array contains
+
+  DFnew.
+    select("*")
+    .where(array_contains($"frameworks_id",1))
+      .show(false)
 
 
   }
